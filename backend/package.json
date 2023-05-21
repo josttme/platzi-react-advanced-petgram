@@ -1,0 +1,29 @@
+{
+	"name": "platzi-react-advanced-petgram",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"deploy": "vercel -t <tu-token>",
+		"start:api": "NODE_ENV=production node index.js",
+		"dev:api": "nodemon index.js --ignore db.json",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"apollo-server-express": "^3.12.0",
+		"bcrypt": "^5.1.0",
+		"cors": "^2.8.5",
+		"express": "^4.18.2",
+		"express-jwt": "^8.4.1",
+		"graphql": "^15.8.0",
+		"jsonwebtoken": "^9.0.0",
+		"lowdb": "1.0.0",
+		"react-router-dom": "^6.11.2",
+		"uuid": "3.3.2"
+	},
+	"devDependencies": {
+		"nodemon": "^2.0.22"
+	}
+}
