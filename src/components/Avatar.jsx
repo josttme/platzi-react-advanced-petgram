@@ -1,8 +1,8 @@
 import { PropTypes } from 'prop-types'
 import { Link } from 'react-router-dom'
-export function Avatar({ name, emoji, cover, path }) {
+export function Avatar({ id, name, emoji, cover, path }) {
 	return (
-		<Link to={path}>
+		<Link to={`${path}-${id}`}>
 			<div className="flex items-center gap-4 space-x-2">
 				<div>
 					<img
@@ -21,6 +21,7 @@ export function Avatar({ name, emoji, cover, path }) {
 }
 
 Avatar.propTypes = {
+	id: PropTypes.string.isRequired,
 	name: PropTypes.string.isRequired,
 	emoji: PropTypes.string.isRequired,
 	cover: PropTypes.string.isRequired,

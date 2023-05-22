@@ -7,10 +7,11 @@ import {
 	ApolloProvider,
 	InMemoryCache
 } from '@apollo/client'
+import { Profiles } from '../pages/Profiles'
 
 const client = new ApolloClient({
 	uri: 'https://server-petgram-josttme.vercel.app/graphql',
-	cache: new InMemoryCache() // En esta instancia de cache, GraphQL guarda nuestros queries.
+	cache: new InMemoryCache()
 })
 export function App() {
 	return (
@@ -19,7 +20,8 @@ export function App() {
 				<Routes>
 					<Route path="/" element={<Layout />}>
 						<Route index element={<Home />} />
-						<Route path="users" element={<Users />} />
+						<Route path="/users" element={<Users />} />
+						<Route path="/photos/:type" element={<Profiles />} />
 					</Route>
 				</Routes>
 			</BrowserRouter>
