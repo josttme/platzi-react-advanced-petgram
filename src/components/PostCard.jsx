@@ -1,26 +1,26 @@
 import { PropTypes } from 'prop-types'
 
-export function PostCard({ categoryId, src, userId, likes }) {
+export function PostCard({
+	id,
+	likes,
+	liked,
+	src,
+	userId,
+	categoryName,
+	categoryCover,
+	categoryId
+}) {
 	return (
 		<div className="h-full w-full py-2">
-			<div className="flex h-full w-full items-center ">
+			<div className="flex h-full w-full items-center gap-2 p-2 ">
 				<div className="grid h-12 w-12 place-content-center">
-					<div className="relative  h-8 w-8 overflow-hidden rounded-full bg-gray-100 dark:bg-gray-600">
-						<svg
-							className="absolute -left-1 h-10 w-10 text-gray-400"
-							fill="currentColor"
-							viewBox="0 0 20 20"
-							xmlns="http://www.w3.org/2000/svg"
-						>
-							<path
-								fillRule="evenodd"
-								d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
-								clipRule="evenodd"
-							></path>
-						</svg>
-					</div>
+					<img
+						className="h-10 w-10 rounded-full  object-cover"
+						src={categoryCover}
+						alt={categoryName}
+					/>
 				</div>
-				<span>{categoryId}</span>
+				<span>{categoryName}</span>
 			</div>
 			<div>
 				<img className="w-full" src={src} alt={categoryId} />
@@ -55,8 +55,12 @@ export function PostCard({ categoryId, src, userId, likes }) {
 }
 
 PostCard.propTypes = {
-	categoryId: PropTypes.string,
+	id: PropTypes.string,
+	likes: PropTypes.number,
+	liked: PropTypes.bool,
 	src: PropTypes.string,
-	userId: PropTypes.number,
-	likes: PropTypes.number
+	userId: PropTypes.string,
+	categoryName: PropTypes.string,
+	categoryCover: PropTypes.string,
+	categoryId: PropTypes.string
 }
