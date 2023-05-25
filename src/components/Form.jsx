@@ -1,7 +1,7 @@
 import { PropTypes } from 'prop-types'
 import useFormUser from '../hooks/useFormUser'
 
-export const Form = ({ onSubmit, title }) => {
+export const Form = ({ onSubmit, title, disabled, error }) => {
 	const initialState = {
 		email: '',
 		password: ''
@@ -17,12 +17,19 @@ export const Form = ({ onSubmit, title }) => {
 	return (
 		<>
 			<h2>{title}</h2>
-			<form onSubmit={handleSubmit} className="text-red-500">
+			<form
+				disabled={disabled}
+				onSubmit={handleSubmit}
+				className="text-red-500 disabled:opacity-50"
+			>
 				<input
 					placeholder="Email"
 					name="email"
 					value={email}
 					onChange={onChange}
+					autoComplete="username"
+					disabled={disabled}
+					className="text-red-500 disabled:opacity-50"
 				/>
 				<input
 					type="password"
@@ -30,8 +37,19 @@ export const Form = ({ onSubmit, title }) => {
 					name="password"
 					value={password}
 					onChange={onChange}
+					autoComplete="current-password"
+					disabled={disabled}
+					className="text-red-500 disabled:opacity-50"
 				/>
-				<button type="submit">{title}</button>
+				<button
+					className="text-red-500 disabled:opacity-50"
+					type="submit"
+				>
+					{title}
+				</button>
+				{error && (
+					<span className="block text-red-500 ">{error}</span>
+				)}
 			</form>
 		</>
 	)
@@ -39,5 +57,7 @@ export const Form = ({ onSubmit, title }) => {
 
 Form.propTypes = {
 	onSubmit: PropTypes.func.isRequired,
-	title: PropTypes.string.isRequired
+	title: PropTypes.string.isRequired,
+	error: PropTypes.string,
+	disabled: PropTypes.bool
 }

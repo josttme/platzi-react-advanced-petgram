@@ -1,4 +1,5 @@
 import { PropTypes } from 'prop-types'
+import { useLikeMutation } from '../hooks/useLikeMutation'
 
 export function PostCard({
 	id,
@@ -10,6 +11,14 @@ export function PostCard({
 	categoryCover,
 	categoryId
 }) {
+	const { mutation } = useLikeMutation()
+	const handleFavClick = () => {
+		mutation({
+			variables: {
+				input: { id }
+			}
+		})
+	}
 	return (
 		<div className="h-full w-full py-2">
 			<div className="flex h-full w-full items-center gap-2 p-2 ">
@@ -27,18 +36,20 @@ export function PostCard({
 			</div>
 			<div className="p-2">
 				<div className="flex gap-2 pb-2">
-					<svg
-						xmlns="http://www.w3.org/2000/svg"
-						fill="none"
-						strokeWidth="2.1"
-						viewBox="0 0 24 24"
-						className="h-7 w-7 stroke-white"
-					>
-						<path
-							strokeLinejoin="round"
-							d="M22 8.862a5.95 5.95 0 01-1.654 4.13c-2.441 2.531-4.809 5.17-7.34 7.608-.581.55-1.502.53-2.057-.045l-7.295-7.562c-2.205-2.286-2.205-5.976 0-8.261a5.58 5.58 0 018.08 0l.266.274.265-.274A5.612 5.612 0 0116.305 3c1.52 0 2.973.624 4.04 1.732A5.95 5.95 0 0122 8.862z"
-						/>
-					</svg>
+					<button type="button" onClick={handleFavClick}>
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							fill="none"
+							strokeWidth="2.1"
+							viewBox="0 0 24 24"
+							className="h-7 w-7 stroke-white"
+						>
+							<path
+								strokeLinejoin="round"
+								d="M22 8.862a5.95 5.95 0 01-1.654 4.13c-2.441 2.531-4.809 5.17-7.34 7.608-.581.55-1.502.53-2.057-.045l-7.295-7.562c-2.205-2.286-2.205-5.976 0-8.261a5.58 5.58 0 018.08 0l.266.274.265-.274A5.612 5.612 0 0116.305 3c1.52 0 2.973.624 4.04 1.732A5.95 5.95 0 0122 8.862z"
+							/>
+						</svg>
+					</button>
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
 						viewBox="0 0 20 20"

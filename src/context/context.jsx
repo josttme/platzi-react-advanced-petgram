@@ -6,9 +6,12 @@ export const Context = createContext()
 
 export function ContextProvider({ children }) {
 	const navigate = useNavigate()
-	const [isAuth, setIsAuth] = useState(false)
+	const [isAuth, setIsAuth] = useState(() => {
+		return !!sessionStorage.getItem('token')
+	})
 
-	const activeAuth = () => {
+	const activeAuth = (token) => {
+		sessionStorage.setItem('token', token)
 		setIsAuth(true)
 	}
 	useEffect(() => {
