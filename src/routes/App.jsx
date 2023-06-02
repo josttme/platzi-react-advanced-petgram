@@ -12,7 +12,7 @@ import { ContextProvider } from '../context/context'
 import { User } from '../pages/User'
 import { Favorites } from '../pages/Favorites'
 import { PrivateRoute } from '../pages/PrivateRoute'
-import { NotRegistedUser } from '../pages/NotRegistedUser'
+import Login from '../pages/Login'
 
 const client = new ApolloClient({
 	uri: 'https://server-petgram-josttme.vercel.app/graphql',
@@ -29,7 +29,8 @@ export function App() {
 							<Route index element={<Home />} />
 							<Route path="/users" element={<Users />} />
 							<Route path="/photos/:type" element={<Profiles />} />
-							<Route path="/login" element={<NotRegistedUser />} />
+							<Route path="/login" element={<Login />} />
+
 							<Route
 								path="/user"
 								element={

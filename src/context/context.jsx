@@ -7,7 +7,7 @@ export const Context = createContext()
 export function ContextProvider({ children }) {
 	const navigate = useNavigate()
 	const [isAuth, setIsAuth] = useState(() => {
-		return !!sessionStorage.getItem('token')
+		return !!sessionStorage.getItem('currentUser')
 	})
 
 	const activeAuth = (token) => {
@@ -17,6 +17,7 @@ export function ContextProvider({ children }) {
 	useEffect(() => {
 		isAuth && navigate('/favorites')
 	}, [isAuth])
+
 	const valueContext = {
 		isAuth,
 		activeAuth

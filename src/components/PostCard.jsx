@@ -8,13 +8,15 @@ export function PostCard({
 	categoryCover,
 	categoryId
 }) {
-	const { likedMovies, toggleLike } = useLocalStorageLikes()
+	const { toggleLike } = useLocalStorageLikes()
 
-	const isLiked = likedMovies[id]
-	console.log(isLiked)
+	/* 	const isLiked = likedMovies[id] */
 
 	const handleLikeClick = () => {
-		toggleLike(id)
+		toggleLike({
+			id,
+			src
+		})
 	}
 
 	return (
