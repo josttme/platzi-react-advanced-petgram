@@ -52,7 +52,12 @@ export function Navbar() {
 						</svg>
 					</div>
 				</NavLink>
-				<NavLink>
+				<NavLink
+					to="/user"
+					className={({ isActive }) =>
+						isActive ? ' bg-[#0938c0]' : ''
+					}
+				>
 					<div className="grid h-12 w-12 place-content-center">
 						<div className="relative  h-8 w-8 overflow-hidden rounded-full bg-gray-100 dark:bg-gray-600">
 							<svg

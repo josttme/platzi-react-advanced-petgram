@@ -1,21 +1,28 @@
 import { PropTypes } from 'prop-types'
-import useLocalStorageLikes from '../hooks/useLocalStorageLikes'
+import { useContext } from 'react'
+import { Context } from '../context/context'
 
 export function PostCard({
 	id,
 	src,
 	categoryName,
 	categoryCover,
-	categoryId
+	categoryId,
+	isFavorite
 }) {
-	const { toggleLike } = useLocalStorageLikes()
-
+	const { toggleFavorites } = useContext(Context)
+	const favorite = isFavorite
+		? 'fill-red-600 stroke-red-600'
+		: 'fill-none'
 	/* 	const isLiked = likedMovies[id] */
 
 	const handleLikeClick = () => {
-		toggleLike({
+		toggleFavorites({
 			id,
-			src
+			src,
+			categoryName,
+			categoryCover,
+			categoryId
 		})
 	}
 
@@ -42,7 +49,7 @@ export function PostCard({
 							fill="none"
 							strokeWidth="2.1"
 							viewBox="0 0 24 24"
-							className="h-7 w-7 stroke-white"
+							className={`${favorite} h-7 w-7 stroke-white`}
 						>
 							<path
 								strokeLinejoin="round"
@@ -77,5 +84,6 @@ PostCard.propTypes = {
 	userId: PropTypes.string,
 	categoryName: PropTypes.string,
 	categoryCover: PropTypes.string,
-	categoryId: PropTypes.string
+	categoryId: PropTypes.string,
+	isFavorite: PropTypes.bool
 }
