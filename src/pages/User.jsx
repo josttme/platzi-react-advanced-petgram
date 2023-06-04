@@ -2,11 +2,12 @@ import { useContext } from 'react'
 import { Context } from '../context/context'
 
 export function User() {
-	const { userName, setIsAuth } = useContext(Context)
+	const { userName, setIsAuth, setUserName } = useContext(Context)
 
 	const handleLogout = () => {
 		setIsAuth(false)
 		sessionStorage.removeItem('currentUser')
+		setUserName('')
 	}
 
 	const handleDeleteUser = () => {
