@@ -12,7 +12,7 @@ import { ContextProvider } from '../context/context'
 import { User } from '../pages/User'
 import { Favorites } from '../pages/Favorites'
 import { PrivateRoute } from '../pages/PrivateRoute'
-import Login from '../pages/Login'
+import { Login } from '../pages/Login'
 
 const client = new ApolloClient({
 	uri: 'https://server-petgram-josttme.vercel.app/graphql',
