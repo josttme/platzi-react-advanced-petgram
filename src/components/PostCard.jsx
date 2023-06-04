@@ -13,7 +13,7 @@ export function PostCard({
 	const { toggleFavorites } = useContext(Context)
 	const favorite = isFavorite
 		? 'fill-red-600 stroke-red-600'
-		: 'fill-none'
+		: 'fill-none stroke-white'
 	/* 	const isLiked = likedMovies[id] */
 
 	const handleLikeClick = () => {
@@ -49,7 +49,7 @@ export function PostCard({
 							fill="none"
 							strokeWidth="2.1"
 							viewBox="0 0 24 24"
-							className={`${favorite} h-7 w-7 stroke-white`}
+							className={`${favorite} h-7 w-7 `}
 						>
 							<path
 								strokeLinejoin="round"
