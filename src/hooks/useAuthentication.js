@@ -17,49 +17,76 @@ export const useAuthentication = () => {
 	}
 
 	const handleLogin = () => {
-		const user = users.find((user) => user.username === loginUsername)
-
-		if (user) {
-			sessionStorage.setItem('currentUser', user.username)
-			activeAuth(user.username)
-			setUserName(user.username)
-		} else {
-			setErrorLogin('El usuario no existe')
+		try {
+			validateUsername(loginUsername)
+			const user = users.find(
+				(user) => user.username === loginUsername
+			)
+			if (user) {
+				sessionStorage.setItem('currentUser', user.username)
+				activeAuth(user.username)
+				setUserName(user.username)
+			} else {
+				setErrorLogin('El usuario no existe')
+			}
+		} catch (error) {
+			setErrorLogin(error.message)
 		}
 	}
 
 	const handleRegister = (e) => {
 		e.preventDefault()
-		const userExists = users.some(
-			(user) => user.username === registerUsername
-		)
+		e.preventDefault()
 
-		if (userExists) {
-			setErrorRegister('El usuario ya existe')
-		} else {
-			const newUser = {
-				username: registerUsername,
-				favorites: []
+		try {
+			validateUsername(registerUsername)
+			const userExists = users.some(
+				(user) => user.username === registerUsername
+			)
+
+			if (userExists) {
+				setErrorRegister('El usuario ya existe')
+			} else {
+				const newUser = {
+					username: registerUsername,
+					favorites: []
+				}
+				const updatedUsers = [...users, newUser]
+				localStorage.setItem(
+					'usernames',
+					JSON.stringify(updatedUsers)
+				)
+				sessionStorage.setItem('currentUser', registerUsername)
+				activeAuth(registerUsername)
+				setUserName(registerUsername)
 			}
-			const updatedUsers = [...users, newUser]
-			localStorage.setItem('usernames', JSON.stringify(updatedUsers))
-			sessionStorage.setItem('currentUser', registerUsername)
-			activeAuth(registerUsername)
-			setUserName(registerUsername)
+		} catch (error) {
+			setErrorRegister(error.message)
 		}
 	}
-
+	const validateUsername = (username) => {
+		if (!username.trim()) {
+			throw new Error('Por favor, ingresa un nombre de usuario')
+		}
+	}
 	const handleSubmit = (e) => {
 		e.preventDefault()
 		setShouldLogin(true)
 	}
 
+	const handleInputChange = (e, setter) => {
+		const value = e.target.value
+			.slice(0, 30)
+			.replace(/[^a-zA-Z0-9ñÑ\s]/g, '')
+		setter(value)
+	}
+
 	const handleChangeLogin = (e) => {
-		setLoginUsername(e.target.value)
+		handleInputChange(e, setLoginUsername)
 	}
 
 	const handleChangeRegister = (e) => {
-		setRegisterUsername(e.target.value)
+		handleInputChange(e, setRegisterUsername)
 	}
 
 	const handleLoginExist = (user) => () => {

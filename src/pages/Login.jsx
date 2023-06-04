@@ -17,7 +17,7 @@ export function Login() {
 	} = useAuthentication()
 
 	return (
-		<>
+		<section className=" mx-auto flex  w-4/5 max-w-lg flex-col items-center justify-center gap-8 pb-28 pt-10">
 			<Form
 				onSubmit={handleSubmit}
 				value={loginUsername}
@@ -38,6 +38,6 @@ export function Login() {
 				userNames={userNames}
 				onUserClick={handleLoginExist}
 			/>
-		</>
+		</section>
 	)
 }
