@@ -1,13 +1,16 @@
 import { useContext, useEffect, useState } from 'react'
 import { Context } from '../context/context'
+import { useNavigate } from 'react-router-dom'
 
 export const useAuthentication = () => {
+	const navigate = useNavigate()
 	const { activeAuth, setUserName } = useContext(Context)
 	const [loginUsername, setLoginUsername] = useState('')
 	const [registerUsername, setRegisterUsername] = useState('')
 	const [errorLogin, setErrorLogin] = useState('')
 	const [errorRegister, setErrorRegister] = useState('')
 	const [shouldLogin, setShouldLogin] = useState(false)
+	const [shouldRedirect, setShouldRedirect] = useState(false)
 
 	const users = getUsersFromLocalStorage()
 	const userNames = users?.map((user) => user.username)
@@ -26,6 +29,7 @@ export const useAuthentication = () => {
 				sessionStorage.setItem('currentUser', user.username)
 				activeAuth(user.username)
 				setUserName(user.username)
+				setShouldRedirect(true)
 			} else {
 				setErrorLogin('El usuario no existe')
 			}
@@ -59,6 +63,7 @@ export const useAuthentication = () => {
 				sessionStorage.setItem('currentUser', registerUsername)
 				activeAuth(registerUsername)
 				setUserName(registerUsername)
+				setShouldRedirect(true)
 			}
 		} catch (error) {
 			setErrorRegister(error.message)
@@ -99,7 +104,12 @@ export const useAuthentication = () => {
 			handleLogin()
 			setShouldLogin(false)
 		}
-	}, [shouldLogin])
+
+		const currentUser = sessionStorage.getItem('currentUser')
+		if (currentUser && shouldRedirect) {
+			navigate('/')
+		}
+	}, [shouldLogin, shouldRedirect])
 
 	return {
 		loginUsername,

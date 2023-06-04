@@ -1,13 +1,10 @@
 import { PropTypes } from 'prop-types'
-import { createContext, useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { createContext, useState } from 'react'
 import { useFavorites } from '../hooks/useFavorites'
 
 export const Context = createContext()
 
 export function ContextProvider({ children }) {
-	const navigate = useNavigate()
-
 	const [userName, setUserName] = useState(() => {
 		return sessionStorage.getItem('currentUser')
 	})
@@ -30,9 +27,11 @@ export function ContextProvider({ children }) {
 		sessionStorage.setItem('currentUser', token)
 		setIsAuth(true)
 	}
-	useEffect(() => {
-		isAuth && navigate('/favorites')
-	}, [isAuth])
+	/* 	useEffect(() => {
+		if (isAuth) {
+			navigate('/')
+		}
+	}, [isAuth]) */
 
 	const valueContext = {
 		isAuth,
