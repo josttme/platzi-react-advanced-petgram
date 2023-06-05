@@ -18,6 +18,7 @@ export function User() {
 		localStorage.setItem('usernames', JSON.stringify(updatedUsers))
 		setIsAuth(false)
 		sessionStorage.removeItem('currentUser')
+		setUserName('')
 	}
 
 	return (
