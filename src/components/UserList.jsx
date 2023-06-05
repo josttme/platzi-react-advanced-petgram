@@ -4,11 +4,13 @@ export function UserList({ userNames, onUserClick }) {
 	if (userNames && userNames.length === 0) return
 	return (
 		<div className="mx-auto flex w-11/12 flex-col items-center justify-center gap-4 ">
-			<h2 className="text-2xl font-bold">Selecciona un usuario</h2>
-			<div className="flex flex-wrap gap-2">
+			<h2 className="text-2xl font-bold lg:text-3xl">
+				Selecciona un usuario
+			</h2>
+			<div className="flex flex-wrap gap-2 ">
 				{userNames?.map((user) => (
 					<button
-						className=" rounded-3xl bg-blue-800 px-4 py-2 text-lg  text-white hover:bg-blue-700"
+						className=" rounded-3xl bg-blue-800 px-4 py-2 text-lg  text-white hover:bg-blue-700 lg:text-xl"
 						type="button"
 						key={user}
 						onClick={onUserClick(user)}

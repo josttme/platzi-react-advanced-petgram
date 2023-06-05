@@ -3,6 +3,7 @@ export function Logo() {
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
 			viewBox="-60 -35 120 70"
+			className="lg:h-14 lg:w-44"
 			width={140}
 			height={50}
 		>

@@ -25,18 +25,26 @@ export function PostCard({
 
 	return (
 		<div className="h-full w-full py-2">
-			<div className="flex h-full w-full items-center gap-2 p-2 ">
-				<div className="grid h-12 w-12 place-content-center">
+			<div className="flex items-center gap-2 p-2 ">
+				<div className="grid h-12 w-12 place-content-center lg:h-20 lg:w-20">
 					<img
-						className="h-10 w-10 rounded-full  object-cover"
+						className="h-10 w-10 rounded-full object-cover lg:h-16  lg:w-16"
 						src={categoryCover}
 						alt={categoryName}
+						width={700}
+						height={400}
 					/>
 				</div>
-				<span className="text-lg">{categoryName}</span>
+				<span className="text-lg lg:text-2xl">{categoryName}</span>
 			</div>
 			<div>
-				<img className="w-full" src={src} alt={categoryId} />
+				<img
+					className="w-full"
+					width={700}
+					height={400}
+					src={src}
+					alt={categoryId}
+				/>
 			</div>
 			<div className="p-2">
 				<div className="flex gap-2 pb-2">

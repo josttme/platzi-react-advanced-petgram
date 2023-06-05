@@ -9,13 +9,13 @@ export function Favorites() {
 	)
 	const userFavorites = favoritos[userIndex]?.favorites
 	return (
-		<>
-			<h2 className="pt-5 text-center text-2xl font-bold text-white/90">
+		<div className=" lg:h-[101vh]">
+			<h2 className="pt-5 text-center text-2xl font-bold text-white/90 ">
 				Mis Favoritos
 			</h2>
 			{userFavorites?.map((photo) => (
 				<PostCard key={photo.id} {...photo} isFavorite={true} />
 			))}
-		</>
+		</div>
 	)
 }
