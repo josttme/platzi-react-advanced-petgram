@@ -2,22 +2,26 @@ import { useContext } from 'react'
 import { PostCard } from '../components/PostCard'
 import { useListOfPhotoCards } from '../hooks/useListOfPhotoCards'
 import { Context } from '../context/context'
+import { SkeletonPostCard } from '../components/SkeletonPostCard'
 
 export function Home() {
 	const { loading, error, photos } = useListOfPhotoCards(null)
 	const { isFavorite } = useContext(Context)
-	if (loading) return 'Cargando...'
 	if (error) return `Error: ${error.message}`
 
 	return (
 		<>
-			{photos.map((photo) => (
-				<PostCard
-					key={photo.id}
-					{...photo}
-					isFavorite={isFavorite(photo)}
-				/>
-			))}
+			{loading ? (
+				<SkeletonPostCard />
+			) : (
+				photos.map((photo) => (
+					<PostCard
+						key={photo.id}
+						{...photo}
+						isFavorite={isFavorite(photo)}
+					/>
+				))
+			)}
 		</>
 	)
 }
