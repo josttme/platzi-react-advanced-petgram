@@ -12,8 +12,7 @@ export function Avatar({ id, name, emoji, cover, path }) {
 					/>
 				</div>
 				<p className="text-xl  text-white/90">
-					{' '}
-					{name} {emoji}{' '}
+					{name} {emoji}
 				</p>
 			</div>
 		</Link>

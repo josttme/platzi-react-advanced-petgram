@@ -1,11 +1,22 @@
-export function Heart() {
+import { PropTypes } from 'prop-types'
+export function Heart({ isFavorite }) {
+	const favorite = isFavorite
+		? 'fill-red-600 stroke-red-600'
+		: 'fill-none stroke-white/90'
 	return (
-		<svg
-			xmlns="http://www.w3.org/2000/svg"
-			viewBox="0 0 256 256"
-			className="h-8 w-8 fill-white/90"
-		>
-			<path d="M223,57a58.07,58.07,0,0,0-81.92-.1L128,69.05,114.91,56.86A58,58,0,0,0,33,139l89.35,90.66a8,8,0,0,0,11.4,0L223,139a58,58,0,0,0,0-82Zm-11.35,70.76L128,212.6,44.3,127.68a42,42,0,0,1,59.4-59.4l.2.2,18.65,17.35a8,8,0,0,0,10.9,0L152.1,68.48l.2-.2a42,42,0,1,1,59.36,59.44Z" />
-		</svg>
+		<>
+			<svg
+				xmlns="http://www.w3.org/2000/svg"
+				fill="none"
+				strokeWidth="2.1"
+				viewBox="0 0 24 24"
+				className={`${favorite} h-8 w-8 `}
+			>
+				<path d="M22 8.862a5.95 5.95 0 01-1.654 4.13c-2.441 2.531-4.809 5.17-7.34 7.608-.581.55-1.502.53-2.057-.045l-7.295-7.562c-2.205-2.286-2.205-5.976 0-8.261a5.58 5.58 0 018.08 0l.266.274.265-.274A5.612 5.612 0 0116.305 3c1.52 0 2.973.624 4.04 1.732A5.95 5.95 0 0122 8.862z" />
+			</svg>
+		</>
 	)
+}
+Heart.propTypes = {
+	isFavorite: PropTypes.bool.isRequired
 }

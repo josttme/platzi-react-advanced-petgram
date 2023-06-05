@@ -1,6 +1,7 @@
 import { PropTypes } from 'prop-types'
 import { useContext } from 'react'
 import { Context } from '../context/context'
+import { Heart } from './svg/Heart'
 
 export function PostCard({
 	id,
@@ -11,10 +12,6 @@ export function PostCard({
 	isFavorite
 }) {
 	const { toggleFavorites } = useContext(Context)
-	const favorite = isFavorite
-		? 'fill-red-600 stroke-red-600'
-		: 'fill-none stroke-white'
-	/* 	const isLiked = likedMovies[id] */
 
 	const handleLikeClick = () => {
 		toggleFavorites({
@@ -36,7 +33,7 @@ export function PostCard({
 						alt={categoryName}
 					/>
 				</div>
-				<span>{categoryName}</span>
+				<span className="text-lg">{categoryName}</span>
 			</div>
 			<div>
 				<img className="w-full" src={src} alt={categoryId} />
@@ -44,18 +41,7 @@ export function PostCard({
 			<div className="p-2">
 				<div className="flex gap-2 pb-2">
 					<button type="button" onClick={handleLikeClick}>
-						<svg
-							xmlns="http://www.w3.org/2000/svg"
-							fill="none"
-							strokeWidth="2.1"
-							viewBox="0 0 24 24"
-							className={`${favorite} h-7 w-7 `}
-						>
-							<path
-								strokeLinejoin="round"
-								d="M22 8.862a5.95 5.95 0 01-1.654 4.13c-2.441 2.531-4.809 5.17-7.34 7.608-.581.55-1.502.53-2.057-.045l-7.295-7.562c-2.205-2.286-2.205-5.976 0-8.261a5.58 5.58 0 018.08 0l.266.274.265-.274A5.612 5.612 0 0116.305 3c1.52 0 2.973.624 4.04 1.732A5.95 5.95 0 0122 8.862z"
-							/>
-						</svg>
+						<Heart isFavorite={isFavorite} />
 					</button>
 					{/* 					<a
 						href="https://res.cloudinary.com/midudev/image/upload/w_300/q_80/v1560262103/dogs.png"

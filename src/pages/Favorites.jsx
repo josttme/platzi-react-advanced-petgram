@@ -8,17 +8,14 @@ export function Favorites() {
 		(user) => user.username === userName
 	)
 	const userFavorites = favoritos[userIndex]?.favorites
-	console.log(userFavorites)
-	console.log(userName)
 	return (
 		<>
-			<div>Favorites</div>
-			<span>{userName}</span>
-			<div className="py-10">
-				{userFavorites?.map((photo) => (
-					<PostCard key={photo.id} {...photo} isFavorite={true} />
-				))}
-			</div>
+			<h2 className="pt-5 text-center text-2xl font-bold text-white/90">
+				Mis Favoritos
+			</h2>
+			{userFavorites?.map((photo) => (
+				<PostCard key={photo.id} {...photo} isFavorite={true} />
+			))}
 		</>
 	)
 }

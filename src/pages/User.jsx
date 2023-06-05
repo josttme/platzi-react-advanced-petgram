@@ -21,8 +21,10 @@ export function User() {
 	}
 
 	return (
-		<>
-			<div>Hola! {userName}</div>
+		<section className="flex flex-col items-center justify-center gap-2">
+			<h2 className="py-5 text-center text-2xl font-bold text-white/90">
+				Hola! {userName}
+			</h2>
 			<button
 				type="button"
 				onClick={handleLogout}
@@ -37,6 +39,6 @@ export function User() {
 			>
 				Eliminar Usuario
 			</button>
-		</>
+		</section>
 	)
 }

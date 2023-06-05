@@ -4,7 +4,7 @@ import { Navbar } from '../components/Navbar'
 
 export function Layout() {
 	return (
-		<section className="min-h-screen bg-primary pt-5 text-white">
+		<section className="min-h-screen bg-primary py-16 text-white">
 			<Header />
 			<Outlet />
 			<Navbar />
