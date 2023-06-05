@@ -19,7 +19,7 @@ export function Navbar() {
 					</div>
 				</NavLink>
 				<NavLink
-					to="/users"
+					to="/profiles"
 					className={({ isActive }) =>
 						isActive ? ' bg-[#0938c0]' : ''
 					}

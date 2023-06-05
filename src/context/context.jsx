@@ -27,11 +27,6 @@ export function ContextProvider({ children }) {
 		sessionStorage.setItem('currentUser', token)
 		setIsAuth(true)
 	}
-	/* 	useEffect(() => {
-		if (isAuth) {
-			navigate('/')
-		}
-	}, [isAuth]) */
 
 	const valueContext = {
 		isAuth,
